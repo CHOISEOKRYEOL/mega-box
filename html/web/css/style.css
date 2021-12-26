@@ -1,0 +1,1154 @@
+@charset "utf-8";
+
+/* 스킵 내비게이션 */
+#skip {
+    position: relative;
+}
+
+#skip a {
+    position: absolute; 
+    left: 0px; 
+    top: -35px; 
+    border: 1px solid #fff; 
+    color: #fff;
+    background: #333;
+    line-height: 30px;
+    width: 160px;
+    text-align: center;
+}
+
+/* active: 활성화 */
+#skip a:active,
+#skip a:focus {
+    top: 0;
+}
+
+/* 레이아웃 */
+#wrap {}
+
+#header {
+    height: 325px;
+    /* repeat-x : 이미지를 x축으로만 반복 => 기본값으로 y축으로도 반복이 된다 */
+    /* center top : 이미지를 가운데 정렬하고 위로 고정시킴 => 그럼 확대를 하더라도 이미지가 고정 됨*/
+    background: url(../img/header_bg.jpg) center top repeat-x;
+}
+
+#contents {}
+
+#footer {
+    border-top: 1px solid #eee;
+}
+
+/* 컨텐츠 레이아웃 */
+#cont_nav {
+    background-color: #f6fdff;
+    display: none;
+}
+
+#cont_tit {background-color: #EAF7FD;}
+#cont_ban {background-color: #dceff7;}
+#cont_cont {background-color: #f6fdff;}
+
+/* 컨테이너 */
+.container {width: 990px; margin: auto; height: inherit; background: rgba(255, 255, 255, 0.3) ;}
+
+/* 헤더 */
+
+.header .header-menu {
+    text-align: right;
+}
+
+/* a태그는 인라인(inline) 구조이기 때문에 text-align: right가 먹히지 않는다 
+   그래서 부모가 블록구조로 돼있기 때문에 부모에 추가*/
+.header .header-menu a {
+    color: #fff;
+    /* 인라인 구조는 패팅값이 왼,오른쪽만 먹힌다 */
+    padding: 10px 0px 10px 13px;
+    /* 그래서 속성을 변경 한다 */
+    display: inline-block;
+}
+
+.header .header-menu a:hover {
+    color: #666;
+}
+
+.header .header-tit {
+    text-align: center;
+}
+
+.header .header-tit h1 {
+    background-color: #4aa8d4;
+    font-size: 28px;
+    padding: 5px 20px 6px 20px;
+    /* 기본적으로 inline은 padding, margin등이 먹히지 않는다 */
+    display: inline-block;
+    color: white;
+    margin-top: 40px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.header .header-tit a {
+    display: inline-block;
+    background-color: #2698cb;
+    font-size: 18px;
+    color: white;
+    padding: 5px 20px 6px 20px;
+    margin-top: -5px;
+}
+
+.header .header-icon {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.header .header-icon a {
+    width: 60px;
+    height: 60px;
+    background: url(../img/icon.png);
+    /* text-align는 inline구조일 때는 먹히지 않는다 */
+    /* 그래서 inline-block이나 block으로 변경 후 사용 가능 */
+    /* block은 해당 박스에서 사용 가능하지만 */
+    /* inline-block는 부모에 추가 시 가능 */
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.header .header-icon a.icon1 {
+    background-position: 0 0;
+}
+
+.header .header-icon a.icon2 {
+    background-position: 0 -60px;
+}
+
+.header .header-icon a.icon3 {
+    background-position: 0 -120px;
+}
+
+.header .header-icon a.icon4 {
+    background-position: 0 -180px;
+}
+
+.header .header-icon a.icon1:hover {
+    background-position: -60px 0;
+}
+
+.header .header-icon a.icon2:hover {
+    background-position: -60px  -60px;
+}
+
+.header .header-icon a.icon3:hover {
+    background-position: -60px  -120px;
+}
+
+.header .header-icon a.icon4:hover {
+    background-position: -60px  -180px;
+}
+
+/* float: left로 인한 영역깨짐(height:0) 방지법
+    1. 깨지는 영역에 똑같이 float: left를 사용한다. (X) --> 모든 박스에 float:left를 사용하게 된다.
+    2. float의 성질을 차단하는 clear: both를 사용한다. (X) --> 어떤 영역이 꺠졌는지 찾기가 어려움
+    3. float을 사용한 상위 박스한테 overflow: hidden을 사용합니다. (O) --> 현재는 제일 많이 사용
+    4. clearfix를 사용한다. (O)*/
+
+/* 전체 메뉴 */
+.nav {
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+/*  > : 첫 번째 자식만 해당 */
+.nav > div {
+    float: left;
+    width: 40%;
+}
+
+.nav > div h3 {
+    font-size: 18px;
+    color: #25a2d0;
+    margin-bottom: 4px;
+}
+
+/* ie9 부터 사용 가능 */
+.nav >div:last-child {
+    width: 20%;
+}
+
+.nav > div.last {
+    width: 20%;
+}
+
+.nav > div ol {
+    overflow: hidden;
+}
+
+.nav > div ol li {
+    /* float: left를 사용할시 부모에 overflow:hidden을 넣는 습관을 들여라 */
+    float: left;
+    width: 50%;
+}
+
+.nav > div.last ol li {
+    width: 100%;
+}
+
+.nav > div ol li a:hover {
+    text-decoration: underline;
+}
+
+/* 타이틀 */
+.tit {
+    /* 자식 position에 기준점 */
+    position: relative;
+}
+.tit h2 {
+    font-size: 40px;
+    text-align: center;
+    padding: 5px 0;
+    /* 글자와 글자 간격 */
+    letter-spacing: 2px;
+    color: #2c94c4;
+    font-family: 'Nanum Brush Script', cursive;
+}
+.tit .btn {
+    /* 반응형 웹할때는 position을 가능하면 쓰지 마라 */
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: url(../img/icon.png) no-repeat 0 -600px;
+}
+
+.tit .btn.on {
+    background-position: 0 -660px;
+}
+
+/* 배너 */
+/*
+.ban {
+    position: relative;
+    padding: 24px 0 24px;
+}
+
+.ban a.prev {
+    position: absolute;
+    left: -80px;
+    top: 60px;
+    width: 43px;
+    height: 43px;
+    /* no-repeat : 한번만 나오게 한다 
+    background: url(../img/icon.png) no-repeat -150px 0;
+}
+
+.ban a.prev:hover {
+    background-position: -193px 0;
+}
+
+.ban a.next:hover {
+    background-position: -193px -43px;
+}
+
+.ban a.next {
+    position: absolute;
+    right: -80px;
+    top: 60px;
+    width: 43px;
+    height: 43px;
+    background: url(../img/icon.png) no-repeat -150px -43px;
+}
+
+.ban ul {
+    overflow: hidden;
+}
+
+.ban ul li {
+    float: left; width: 330px;
+}
+
+/* ie9부터 적용 
+.ban ul li:last-child {
+    text-align: right;
+}
+
+/* ie9부터 적용 
+.ban ul li:nth-child(2) {
+    text-align: center;
+} 
+
+.ban ul li.ban_img1 {
+    text-align: left;
+}
+
+.ban ul li.ban_img2 {
+    text-align: center;
+}
+
+.ban ul li.ban_img3 {
+    text-align: right;
+}
+
+.ban ul li img {
+    border: 4px solid #dcdcdc;
+}
+
+.ban ul li img:hover {
+    border-color: #98dcdc;
+}
+*/
+
+/* 슬릭 배너 */
+.ban {
+    position: relative;
+    padding: 24px 0 40px;
+}
+
+.ban .slick-prev {
+    position: absolute;
+    left: -80px;
+    top: 80px;
+    width: 43px;
+    height: 43px;
+     /* no-repeat : 한번만 나오게 한다  */
+    background: url(../img/icon.png) no-repeat -150px 0;
+    text-indent: -9999px;
+}
+
+.ban .slick-next {
+    position: absolute;
+    right: -80px;
+    top: 80px;
+    width: 43px;
+    height: 43px;
+    background: url(../img/icon.png) no-repeat -150px -43px;
+    text-indent: -9999px;
+}
+
+.ban .slick-prev:hover {
+    background-position: -193px 0;
+}
+
+.ban .slick-next:hover {
+    background-position: -193px -43px;
+}
+
+.ban img {
+    border: 4px solid #dcdcdc;
+}
+
+.ban img:hover {
+    border-color: #98dcdc;
+}
+
+.ban .slick-slide {
+    margin: 10px;
+}
+
+.ban .slick-dots {
+    position: absolute;
+    bottom: 15px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.ban .slick-dots li {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}
+
+.ban .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background: #5dbfeb;
+    border-radius: 50%;
+}
+
+.ban .slick-dots li.slick-active button {
+    background: #2b91c8;
+}
+
+/* 컨텐츠 */
+.cont {
+    overflow: hidden;
+    padding-top: 30px;
+}
+
+.cont .column_col1,
+.cont .column_col2,
+.cont .column_col3,
+.cont .column_col4,
+.cont .column_col5,
+.cont .column_col6 {
+    float: left;
+    width: 289px;
+    height: 363px;
+    margin: 0 30px 30px 0;
+    padding-right: 30px;
+    position: relative;
+}
+
+.cont .column_col1 {
+    border-right: 1px solid #c8c8c8;
+}
+
+.cont .column_col2 {
+    border-right: 1px solid #c8c8c8;
+}
+
+.cont .column_col3 {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.cont .column_col4 {
+    border-right: 1px solid #c8c8c8;
+}
+
+.cont .column_col5 {
+    border-right: 1px solid #c8c8c8;
+}
+
+.cont .column_col6 {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.cont .column_col1 .ico_img,
+.cont .column_col2 .ico_img,
+.cont .column_col3 .ico_img,
+.cont .column_col4 .ico_img,
+.cont .column_col5 .ico_img,
+.cont .column_col6 .ico_img {
+    display: block; 
+    width: 60px;
+    height: 60px;
+    background: url(../img/icon.png) no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cont .column_col1 .ico_tit,
+.cont .column_col2 .ico_tit,
+.cont .column_col3 .ico_tit,
+.cont .column_col4 .ico_tit,
+.cont .column_col5 .ico_tit,
+.cont .column_col6 .ico_tit {
+    padding-left: 70px;
+    font-size: 16px;
+    color: #2c96c4;
+}
+
+.cont .column_col1 .ico_desc,
+.cont .column_col2 .ico_desc,
+.cont .column_col3 .ico_desc,
+.cont .column_col4 .ico_desc,
+.cont .column_col5 .ico_desc,
+.cont .column_col6 .ico_desc {
+    padding-left: 70px;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.cont .column_col1 .ico_img {
+    background-position: 0px -240px;
+}
+
+.cont .column_col2 .ico_img {
+    background-position: 0px -300px;
+}
+
+.cont .column_col3 .ico_img {
+    background-position: 0px -360px;
+}
+
+.cont .column_col4 .ico_img {
+    background-position: 0px -420px;
+}
+
+.cont .column_col5 .ico_img {
+    background-position: 0px -480px;
+}
+
+.cont .column_col6 .ico_img {
+    background-position: 0px -540px;
+}
+
+.cont .column_col1 .ico_img:hover {
+    background-position: -60px -240px;
+}
+
+.cont .column_col2 .ico_img:hover {
+    background-position: -60px -300px;
+}
+
+.cont .column_col3 .ico_img:hover {
+    background-position: -60px -360px;
+}
+
+.cont .column_col4 .ico_img:hover {
+    background-position: -60px -420px;
+}
+
+.cont .column_col5 .ico_img:hover {
+    background-position: -60px -480px;
+}
+
+.cont .column_col6 .ico_img:hover {
+    background-position: -60px -540px;
+}
+
+/* 게시판 */
+.notice {
+    position: relative;
+}
+
+.notice h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.notice ul li {
+    /* 한 줄 효과 */
+    /* overflow:hidden의 원래 역할은 내가 지정한 영역 외에는 보이지 않게 하는 것 */
+    overflow: hidden;
+    /* text-overflow: ellipsis : 한 줄 내가 지정한 영역 이외의 해당하는 것은 점으로 표시 */
+    text-overflow: ellipsis;
+    /* white-space: nowrap : 두 줄을 한 줄로 */
+    white-space: nowrap;
+    /* //한 줄 효과 */
+    background: url(../img/dot.gif) no-repeat 0 8px;
+    padding-left: 8px;
+}
+
+.notice ul li a {
+    font-size: 12px;
+}
+
+.notice a.more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    background: url(../img/icon.png) -150px -90px; 
+    width: 17px;
+    height: 17px;
+}
+
+/* 게시판2 */
+.notice2 {
+    position: relative;
+    margin-top: 15px;
+}
+
+.notice2 h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.notice2 li {
+    overflow: hidden;
+    background: url(../img/dot.gif) no-repeat 0 8px;
+    padding-left: 8px;
+}
+.notice2 li a {
+    float: left;
+    width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.notice2 li span {
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+.notice2 a.more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    background: url(../img/icon.png) -150px -90px; 
+    width: 17px;
+    height: 17px;
+}
+
+/* 게시판3 */
+.notice3 {
+    position: relative;
+}
+
+.notice3 h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+.notice3 li {
+    position: relative;
+    padding: 8px 0 14px 60px;
+}
+
+.notice3 li a img {
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #0093bd; 
+}
+
+.notice3 li a strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice3 li a span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.notice3 a.more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    background: url(../img/icon.png) -150px -90px; 
+    width: 17px;
+    height: 17px;
+}
+
+/* 마우스 오버효과1 */
+.notice_hover h4 {
+    font-size: 14px; 
+    color: #0093bd; 
+    padding-bottom: 3px; 
+    font-weight: bold;
+}
+
+.notice_hover ul {
+    overflow: hidden;
+}
+
+.notice_hover li {
+    float: left; 
+    width: 93px; 
+    margin-right: 5px; 
+    text-align: center;
+}
+.notice_hover li:last-child {
+    margin-right: 0;
+} /* ie9부터 적용 */
+
+.notice_hover li.last {
+    margin-right: 0;
+} /* 모든 브라우저에 적용 */
+
+.notice_hover li span {
+    position: relative; 
+    display: block;
+    width: 93px; 
+    height: 93px; 
+    line-height: 93px;
+}
+
+.notice_hover li span img {
+    width: 100%;
+}
+
+.notice_hover li span em {
+    visibility: hidden; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    background: rgba(0,0,0,0.7); 
+    color:#fff; 
+    width: 100%; 
+    height: 100%;
+}
+
+.notice_hover li span:hover em {
+    visibility: visible;
+}
+
+.notice_hover li strong {
+    padding-top: 3px; 
+    display: inline-block; 
+    font-size: 12px;
+}
+
+/* 마우스 오버효과2 */
+.notice_hover2 {}
+
+.notice_hover2 ul {
+    overflow: hidden;
+}
+
+.notice_hover2 li {
+    float: left; 
+    width: 93px; 
+    text-align: center; 
+    margin-right: 5px;
+}
+
+.notice_hover2 li.last {
+    margin-right: 0;
+}
+
+.notice_hover2 li a {}
+
+.notice_hover2 li a span {
+    position: relative; 
+    display: block; 
+    width: 93px; 
+    height: 93px;
+}
+
+.notice_hover2 li a span img {
+    width: 100%; 
+}
+
+.notice_hover2 li a span em {
+    visibility: hidden; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    width: 100%; 
+    background: rgba(0,0,0,0.7); 
+    color:#fff;
+}
+
+.notice_hover2 li a span:hover em {
+    visibility: visible;
+}
+
+.notice_hover2 li a strong {
+    padding-top: 3px; 
+    display: inline-block; 
+    font-size: 12px;
+}
+
+/* 컨텐츠 요소를 보이지 않게 하는 방법 
+1. display:none --- display:block (영역이 사라짐)
+2. visibility: hidden --- visibility: visible; (영역유지)
+3. opacity: 0; --- opacity: 1; (영역유지)
+4. width:0; height:0; overflow:hidden;
+*/
+
+/* 탭메뉴 */
+.tab_menu {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 8px;
+    height: 105px;
+}
+
+.tab_menu ul {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab_menu ul li {
+    float: left;
+    border: 1px solid #ccc;
+    /* 두 줄 효과를 한 줄 효과로 보이게 할 수 있다 */
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+
+.tab_menu ul li a {
+    padding: 5px 10px;
+    display: block;
+}
+
+.tab_menu ul li ul {
+    position: absolute;
+    left: 0;
+    top: 48px;
+    width: 270px;
+    border: 0;
+}
+.tab_menu ul li ul li {
+    float: none;
+    border: 0;
+    background: url(../img/dot.gif) no-repeat 9px 8px;
+    padding-left: 18px;
+}
+
+.tab_menu ul li ul li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0 0 3px 0;
+}
+
+.tab_menu ul li.active {
+    background: #2c94c4;
+}
+
+.tab_menu ul li.active a {
+    color: #fff;
+}
+
+.tab_menu ul li.active ul li a {
+    color: #333;
+}
+
+/* 게시판4 */
+.notice4 {
+    position: relative;
+    border: 1px solid #ccc;
+}
+.notice4 h4 {
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #0093bd;
+    font-weight: 700;
+}
+
+.notice4 h4 em {
+    color: #cf3292;
+}
+
+.notice4 ul {
+    padding: 10px;
+}
+
+.notice4 ul li {
+    overflow: hidden;
+    background: url(../img/dot.gif) no-repeat 0 8px;
+    padding-left: 8px;
+    padding-bottom: 2px;
+}
+
+.notice4 ul li a {
+    float: left;
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice4 ul li span {
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+.notice4 a.more {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+
+/* 갤러리 */
+.gallery {
+    border: 1px solid #ccc;
+    position: relative;
+    /* 내가 지정한 영역외에는 보이지 마라 */
+    overflow: hidden;
+    height: 255px;
+}
+
+.gallery h4 {
+    font-size: 14px;
+    color: #0093bd;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0 8px 11px;
+    font-weight: bold;
+}
+
+.gallery .gallery_btn {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+
+.gallery .gallery_btn ul {
+    overflow: hidden;
+}
+
+.gallery .gallery_btn li {
+    float: left;
+    margin: 1px 2px;
+}
+
+.gallery .gallery_btn li a {
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../img/icon.png) no-repeat;
+}
+
+.gallery .gallery_btn li.gb_icon1 a {
+    background-position: -150px -120px;
+}
+
+.gallery .gallery_btn li.gb_icon2 a {
+    background-position: -150px -143px;
+}
+
+.gallery .gallery_btn li.gb_icon3 a {
+    background-position: -150px -166px;
+}
+
+.gallery .gallery_btn li.gb_icon4 a {
+    background-position: -150px -189px;
+}
+
+.gallery .gallery_btn li.gb_icon1 a:hover {
+    background-position: -173px -120px;
+}
+
+.gallery .gallery_btn li.gb_icon2 a:hover {
+    background-position: -173px -143px;
+}
+
+.gallery .gallery_btn li.gb_icon3 a:hover {
+    background-position: -173px -166px;
+}
+
+.gallery .gallery_btn li.gb_icon4 a:hover {
+    background-position: -173px -189px;
+}
+
+.gallery .gallery_img img {
+    width: 100%;
+}
+
+/* 슬릭 갤러리 */
+.gallery .gallery_btn button {
+    float: left;
+    margin: 1px 2px;
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../img/icon.png) no-repeat;
+}
+
+.gallery .gallery_btn .gb_icon1 {
+    background-position: -150px -120px;
+}
+
+.gallery .gallery_btn .gb_icon2 {
+    background-position: -150px -143px;
+}
+
+.gallery .gallery_btn .gb_icon3 {
+    background-position: -150px -166px;
+}
+
+.gallery .gallery_btn .gb_icon4 {
+    background-position: -150px -189px;
+}
+
+.gallery .gallery_btn .gb_icon1:hover {
+    background-position: -173px -120px;
+}
+
+.gallery .gallery_btn .gb_icon2:hover {
+    background-position: -173px -143px;
+}
+
+.gallery .gallery_btn .gb_icon3:hover {
+    background-position: -173px -166px;
+}
+
+.gallery .gallery_btn .gb_icon4:hover {
+    background-position: -173px -189px;
+}
+
+/* 로그인 */
+#login_wrap {
+    background: #f2f4f5;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.login_header {
+    overflow: hidden;
+    font-size: 12px;
+    height: 30px;
+}
+
+.login_header .lh_check {
+    float: left;
+    padding-right: 15px;
+}
+
+/* input박스 위치 조정 */
+.login_header .lh_check .input_check {
+    vertical-align: -2px;
+}
+
+.login_header .lh_ip {
+    float: left;
+}
+
+.login_header .lh_ip em {
+    color: #0093bd;
+    text-decoration: underline;
+}
+
+.login_content {
+    position: relative;
+}
+
+.login_content .lc_btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 62px;
+    height: 47px;
+    background: #fff;
+    border: 1px solid #bebebe;
+}
+
+.login_content .input_text {
+    width: 182px;
+    height: 16px;
+    padding: 2px 5px;
+    border: 1px solid #bebebe;
+    margin-bottom: 3px;
+    background: #fff;
+}
+
+.login_footer {
+    margin-top: 5px;
+}
+
+.login_footer li {
+    display: inline;
+}
+
+.login_footer li a{
+    font-size: 12px;
+}
+
+/* 팝업 */
+.popup {
+    
+}
+
+.popup h4 {
+    font-size: 14px;
+    color: #0093bd;
+    padding-bottom: 4px;
+    font-weight: 700;
+}
+
+.popup ul {
+    overflow: hidden;
+}
+
+.popup ul li {
+    float: left;
+    width: 93px;
+    margin-right: 5px;
+}
+
+.popup li.last {
+    margin-right: 0;
+}
+
+.popup li img {
+    width: 100%;
+}
+
+/* 푸터 */
+.footer {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.footer ul {
+    margin-bottom: 20px;
+}
+
+.footer li {
+    /* 가로 정렬 시 float:left와 inline이 있는데 */
+    /* float:left는 text-align이 먹히지 않기 때문에 inline으로 한다 */
+    display: inline;
+    padding: 0 7px 0 10px;
+    position: relative;
+}
+
+/* 사이사이 막대 생성 */
+.footer li::before {
+    content: '';
+    width: 1px;
+    height: 12px;
+    background: #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.footer li:first-child::before {
+    width: 0;
+    height: 0;
+}
+
+.footer .w3c {
+    margin-top: 15px;
+}
+
+/* 레이어 팝업 */
+#layer {
+    display: none;
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    width: 700px;
+    border: 10px solid #dceff7;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+}
+
+#layer img {
+    width: 100%;
+    /* 이미지는 inline구조이기 때문에  font-size나 line-height값이 숨겨져 있다*/
+    /* 그래서 아래 부분이 띄어져 흰색으로 보이기 때문에 */
+    /* block으로 해주면 아랫부분의 흰색이 없어진다 */
+    display: block;
+}
+
+#layer .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #0093bd;
+    padding: 1px 6px;
+    color: #fff;
+}
+
+#layer .close:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {padding: 0; margin: 0;}
+        #wrap {width: 1200px; margin: auto;}
+        body {background: #e3f2fd;}
+        header {width: 100%; height: 100px; background: #81d4fa;}
+        aside {float: left; width: 30%; height: 900px; background: #4fc3f7;}
+        .article1 {float: left; width: 70%; height: 300px; background: #29b6f6;}
+        .article2 {float: left; width: 70%; height: 300px; background: #03a9f4;}
+        .article3 {float: left; width: 70%; height: 300px; background:  #039be5;}
+        footer { clear: both; width: 100%; height: 100px; background:  #0288d1;}
+
+        /* 화면 너비 0 ~ 1200px */
+        @media (max-width: 1240px) {
+            /* 아랫부분 스크롤바를 없애주기 위해서 */
+            #wrap {width: 100%}
+            .article1{height: 450px;}
+            .article2{height: 450px;}
+            .article3 {width: 100%;}
+        }
+        /* 화면 너비 0 ~ 768px */
+        @media (max-width: 768px) {
+            aside {width: 100%; height: 300px;}
+            .article1{float: left; width: 50%;}
+            .article2{float: left; width: 50%;}
+        }
+        /* 화면 너비 0 ~ 480px */
+        @media (max-width: 480px) {
+            .article1{width: 100%;}
+            .article2{width: 100%;}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>h</header>
+        <aside>a</aside>
+        <section class="article1">s</section>
+        <section class="article2">s</section>
+        <section class="article3">s</section>
+        <footer>f</footer>
+    </div>     
+</body>
+</html>

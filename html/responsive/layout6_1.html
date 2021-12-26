@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout6</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        body {background-color: #fffde7;}
+        #wrap {width: 1200px; margin: auto;}
+        header {width: 100%; height: 100px; background: #fff; background-color: #ffe082;}
+        article {width: 100%; height: 300px; background-color: #ffd54f;}
+        section {overflow:hidden; width:90%; padding: 5%; background-color: #ffca28;}
+        section > div { width: 18%; float: left; margin: 1%; height: 170px; background-color: #ff9800; border-radius: 5px;}
+        footer {width: 100%; height: 100px; background-color: #ffb300;}
+
+        /* 화면 너비 0 ~ 1200px */
+        @media (max-width: 1220px) {
+            #wrap {width: 100%;}
+            section > div {
+                /* 4개만 나오게 할라며 25%이지만 양쪽 마진이 들어가기 때문에 좀 줄인다 */
+                width: 23%;
+            }
+            /* nth-child(숫자) : 숫자에 해당하는 번째에 해당*/
+            /* nth-child(5n) : 5의배수에 해당 */
+            section > div:nth-child(5n) {
+                display: none;
+            }
+        }
+        /* 화면 너비 0 ~ 768px */
+        @media (max-width: 768px) {
+            section > div {
+                width: 31.33333%;
+            }
+            section > div:nth-child(5) {
+                display: block;
+            }
+        }
+        /* 화면 너비 0 ~ 480px */
+        @media (max-width: 510px) {
+            section > div {
+                width: 48%;
+            }
+            section > div:nth-child(5n) {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header></header>
+        <article></article>
+        <section>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+        <footer></footer>
+    </div>
+</body>
+</html>
